@@ -17,7 +17,7 @@ Simple request provider for interacting with the
 ## Usage
 
 ```typescript
-import { CoinbaseClientOptions, CoinbaseRequest } from 'coinbase'
+import { CoinbaseClient, CoinbaseClientOptions, CoinbaseRequest } from 'coinbase'
 
 const options: CoinbaseClientOptions = {
   key: '<API_KEY>',
@@ -25,7 +25,12 @@ const options: CoinbaseClientOptions = {
   secret: '<API_SECRET>',
 }
 
-// Create a new request client for a specific resource
+// Use the client (recommended)
+const coinbase = new CoinbaseClient(options) // Options are only required for authenticated requests.
+const btc = coinbase.products.get('BTC-USD')
+
+// Create a new request client for a specific resource, useful for the plethora
+// of resources that aren't modeled yet.
 const products = new CoinbaseRequest('/products', options)
 const all = await products.get()
 const single = await products.get('/BTC-USD')
