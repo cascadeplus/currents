@@ -6,3 +6,6 @@
 
 export type { CoinbaseClientOptions } from './options.ts'
 export { CoinbaseRequest } from './request.ts'
+export { CoinbaseClient } from './client.ts'
+
+export type * from './types/product.ts'
